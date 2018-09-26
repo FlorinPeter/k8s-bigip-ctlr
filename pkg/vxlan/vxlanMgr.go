@@ -115,7 +115,7 @@ func (vxm *VxlanMgr) ProcessNodeUpdate(obj interface{}, err error) {
 		nodeAddrs := node.Status.Addresses
 		rec := fdbRecord{}
 		for _, addr := range nodeAddrs {
-			if addr.Type == addrType {
+			if addr.Type == addrType && strings.Contains(addr.Address, "10.171.230.60"){
 				rec.Endpoint = addr.Address
 				// Initially set the name to a fake MAC (for OpenShift use)
 				// For flannel, this will be overwritten with the real MAC
